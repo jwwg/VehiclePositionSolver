@@ -1,6 +1,6 @@
-﻿using VehiclePositionLookup.Buffer;
+﻿using VehiclePositionSolver.Buffer;
 
-namespace VehiclePositionLookup.Parser
+namespace VehiclePositionSolver.Parser
 {
     public interface IPositionParser
     {

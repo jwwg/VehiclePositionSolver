@@ -17,7 +17,7 @@ Notes
 
 Benchmark
 ----------------------------------------------
-Benchmarked by running 3 times and taking best result
+Benchmarked by running 3 times and taking best result (Release profile)
 Test Hardware : i7 @ 3.4GHz, 8 GB RAM, SSD
 
 Benchmark application :

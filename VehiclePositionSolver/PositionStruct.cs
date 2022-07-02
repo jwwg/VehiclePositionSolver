@@ -2,7 +2,7 @@
 
 using GeoCoordinatePortable;
 
-namespace VehiclePositionLookup
+namespace VehiclePositionSolver
 {
     public struct PositionStruct
     {

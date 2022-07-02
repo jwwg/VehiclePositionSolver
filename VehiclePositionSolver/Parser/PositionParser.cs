@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using VehiclePositionLookup;
-using VehiclePositionLookup.Buffer;
-using VehiclePositionLookup.Parser;
+using VehiclePositionSolver;
+using VehiclePositionSolver.Buffer;
+using VehiclePositionSolver.Parser;
 
 internal class PositionParser : IPositionParser
 {

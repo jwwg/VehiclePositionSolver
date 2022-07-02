@@ -1,9 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
-using GeoCoordinatePortable;
+﻿using GeoCoordinatePortable;
 
-namespace VehiclePositionLookup
+namespace VehiclePositionSolver
 {
-    internal struct InputPositionStruct
+    public struct InputPositionStruct
     {
         public GeoCoordinate position;
         public double distance;

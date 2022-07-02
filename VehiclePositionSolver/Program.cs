@@ -1,23 +1,26 @@
-﻿using GeoCoordinatePortable;
-using VehiclePositionLookup.Buffer;
-using VehiclePositionLookup.DataLoad;
-using VehiclePositionLookup.Parser;
+﻿using CommandLine;
+using GeoCoordinatePortable;
+using VehiclePositionSolver.Pipeline;
 
-long bufferSize = 2000000;
+Parser.Default.ParseArguments<PipelineOptions>(Environment.GetCommandLineArgs()).
+        WithNotParsed(HandleBadInput).
+        WithParsed(Process);
 
-Console.WriteLine("Reading");
-IPositionBuffer positionBuffer = new PositionBuffer(bufferSize);
-IPositionParser positionParser = new PositionParser();
-var dataLoader = new DataLoader(positionBuffer, positionParser);
-long totalMs = dataLoader.Load();
-Console.WriteLine("Read time " + totalMs);
-
-GeoCoordinate[] geoCoordinates = CoordinateInitialiser.Init();
-var resolver = new ClosestPositionSolver(geoCoordinates, positionBuffer);
-totalMs += resolver.Solve();
-foreach (var result in resolver.Results)
+void Process(PipelineOptions pipelineOptions)
 {
-    Console.WriteLine(result.distance + " distance, index  " + result.bufferIndex);
-}
-Console.WriteLine("Total time " + totalMs);
+    Pipeline pipeline = new Pipeline();
 
+    IPipelineReader pipeLineReader = StaticBuilder.Reader(pipelineOptions);
+    IPipelineSolver solver = StaticBuilder.Solver(pipelineOptions);
+
+    pipeline.
+        AddReader(pipeLineReader).
+        AddSolver(solver).
+        Run();
+
+}
+
+void HandleBadInput(IEnumerable<Error> obj)
+{
+    Console.WriteLine("Invalid command line arguments. Use --help, or run with no parameters.");
+}

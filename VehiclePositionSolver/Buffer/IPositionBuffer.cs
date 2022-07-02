@@ -1,6 +1,7 @@
 ﻿using GeoCoordinatePortable;
+using VehiclePositionSolver;
 
-namespace VehiclePositionLookup.Buffer
+namespace VehiclePositionSolver.Buffer
 {
     public interface IPositionBuffer
     {
@@ -9,5 +10,6 @@ namespace VehiclePositionLookup.Buffer
         void PreAllocate();
         void AddPosition(PositionStruct position);
         GeoCoordinate At(long i);
+
     }
 }

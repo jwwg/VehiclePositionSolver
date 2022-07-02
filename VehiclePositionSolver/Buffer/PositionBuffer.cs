@@ -1,31 +1,33 @@
 ﻿using GeoCoordinatePortable;
-using VehiclePositionLookup;
-using VehiclePositionLookup.Buffer;
+using VehiclePositionSolver;
 
-internal class PositionBuffer : IPositionBuffer
+namespace VehiclePositionSolver.Buffer
 {
-    private long bufferSize;
-    private PositionStruct[] positions;
-    private int _position;
-
-    public PositionBuffer(long bufferSize)
+    internal class PositionBuffer : IPositionBuffer
     {
-        this.bufferSize = bufferSize;
-    }
+        private long bufferSize;
+        private PositionStruct[] positions;
+        private int _position;
 
-    public long MaxIndex => bufferSize;
+        public PositionBuffer(long bufferSize)
+        {
+            this.bufferSize = bufferSize;
+        }
 
-    public void AddPosition(PositionStruct position)
-    {
-        positions[_position] = position;
-        _position++;
-    }
+        public long MaxIndex => bufferSize;
 
-    public GeoCoordinate At(long i) => positions[i].geoCoordinate;
+        public void AddPosition(PositionStruct position)
+        {
+            positions[_position] = position;
+            _position++;
+        }
 
-    public void PreAllocate()
-    {
-        _position = 0;
-        positions = new PositionStruct[bufferSize];
+        public GeoCoordinate At(long i) => positions[i].geoCoordinate;
+
+        public void PreAllocate()
+        {
+            _position = 0;
+            positions = new PositionStruct[bufferSize];
+        }
     }
 }
