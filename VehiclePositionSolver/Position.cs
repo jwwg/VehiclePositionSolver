@@ -4,20 +4,24 @@ using GeoCoordinatePortable;
 
 namespace VehiclePositionSolver
 {
-    public struct PositionStruct
+    public class Position
     {
         public int id;
         public float latitude;
         public float longitude;
         public GeoCoordinate geoCoordinate;
 
+        public double latitudeRadians;
+        public double longitudeRadians;
 
-        public PositionStruct(int id, float latitude, float longitude) : this()
+        public Position(int id, float latitude, float longitude) 
         {
             this.id = id;
             this.latitude = latitude;
             this.longitude = longitude;
             geoCoordinate = new GeoCoordinate(latitude, longitude);
+            latitudeRadians = geoCoordinate.Latitude * Constants.DegreesToRadians;
+            longitudeRadians = geoCoordinate.Longitude * Constants.DegreesToRadians;
         }
 
         public override string ToString()

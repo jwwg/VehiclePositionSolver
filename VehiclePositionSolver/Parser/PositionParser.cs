@@ -11,9 +11,13 @@ internal class PositionParser : IPositionParser
 
     public IPositionBuffer PositionBuffer { get; set; }
 
-    public bool ParseTo(MemoryStream stream)
+    public PositionParser()
     {
         id = 0;
+    }
+
+    public bool ParseTo(MemoryStream stream)
+    {
         return ParseBuffer(stream.Read(buffer, 0, 30));
     }
 
@@ -21,10 +25,10 @@ internal class PositionParser : IPositionParser
     {
         if (bytesRead == 0) return false;
         
-        PositionStruct position = new PositionStruct(id,
+        Position position = new Position(id,
             latitude(), longitude());
-        //Console.WriteLine(position);
         PositionBuffer.AddPosition(position);
+        id++;
         return true;
     }
 

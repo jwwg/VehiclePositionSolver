@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "VehiclePositionSolver": {
+      "commandName": "Project",
+      "commandLineArgs": "--solver GridSolver"
+    }
+  }
+}

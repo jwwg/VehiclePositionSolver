@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehiclePositionSolver", "VehiclePositionSolver\VehiclePositionSolver.csproj", "{002630DB-E3C6-4EF4-A4B9-4D7370AE3425}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehiclePositionTests", "VehiclePositionTests\VehiclePositionTests.csproj", "{7F0BF45A-5665-4D54-BDB9-317E12895548}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{002630DB-E3C6-4EF4-A4B9-4D7370AE3425}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{002630DB-E3C6-4EF4-A4B9-4D7370AE3425}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{002630DB-E3C6-4EF4-A4B9-4D7370AE3425}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F0BF45A-5665-4D54-BDB9-317E12895548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F0BF45A-5665-4D54-BDB9-317E12895548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F0BF45A-5665-4D54-BDB9-317E12895548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F0BF45A-5665-4D54-BDB9-317E12895548}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,4 @@
 ﻿using CommandLine;
-using GeoCoordinatePortable;
 using VehiclePositionSolver.Pipeline;
 
 Parser.Default.ParseArguments<PipelineOptions>(Environment.GetCommandLineArgs()).

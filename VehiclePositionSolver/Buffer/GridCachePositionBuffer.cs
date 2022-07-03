@@ -1,17 +1,18 @@
 ﻿using GeoCoordinatePortable;
-using VehiclePositionSolver;
 
 namespace VehiclePositionSolver.Buffer
 {
-    internal class PositionBuffer : IPositionBuffer
+    internal class GridCachePositionBuffer : IPositionBuffer
     {
         private long bufferSize;
         private Position[] positions;
         private int _position;
+        public readonly GridCache.GridCache[] gridCache;
 
-        public PositionBuffer(long bufferSize)
+        public GridCachePositionBuffer(long bufferSize, GridCache.GridCache[] gridCache)
         {
             this.bufferSize = bufferSize;
+            this.gridCache = gridCache;
         }
 
         public long MaxIndex => bufferSize;
@@ -20,6 +21,8 @@ namespace VehiclePositionSolver.Buffer
         {
             positions[_position] = position;
             _position++;
+            foreach (var grid in gridCache)
+                grid.Add(position);
         }
 
         public GeoCoordinate CoordAt(long i) => positions[i].geoCoordinate;

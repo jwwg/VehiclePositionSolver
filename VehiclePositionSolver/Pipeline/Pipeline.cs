@@ -29,6 +29,7 @@ namespace VehiclePositionSolver.Pipeline
 
         public void Run()
         {
+            Console.WriteLine("Reading with  " + reader.ToString() + " and solving with " + solver.ToString());
             Console.WriteLine("Reading");
             Stopwatch stopWatch = new();
             stopWatch.Start();
@@ -40,12 +41,19 @@ namespace VehiclePositionSolver.Pipeline
             long totalMs = stopWatch.ElapsedMilliseconds;
             stopWatch.Stop();
             Console.WriteLine("Process time : " + (totalMs - readTime));
-            foreach (var result in solver.Results)
-            {
-                Console.WriteLine(result.distance.ToString("F2") + " m, vehicle  " + reader.RegistrationNrAt(result.bufferIndex));
-            }
+            WriteResults();
             Console.WriteLine("Total time " + totalMs);
         }
 
+        private void WriteResults()
+        {
+            foreach (var result in solver.Results)
+            {
+                Console.WriteLine(result.distance.ToString("F2") + " m, vehicle  "
+                    + reader.RegistrationNrAt(result.bufferIndex) + " closest to "
+                    + result.position.ToString() + " is "
+                    + reader.PositionBuffer.CoordAt(result.bufferIndex));
+            }
+        }
     }
 }

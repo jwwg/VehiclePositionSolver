@@ -23,9 +23,9 @@ namespace VehiclePositionSolver.Readers
 
         public IPositionBuffer PositionBuffer => _positionBuffer;
 
-        public FixedDataReader(long bufferSize = 2000000, string fileName = "VehiclePositions.dat")
+        public FixedDataReader(IPositionBuffer positionBuffer, string fileName = "VehiclePositions.dat")
         {
-            _positionBuffer = new PositionBuffer(bufferSize);
+            _positionBuffer = positionBuffer;
             _parser = new PositionParser();
             this.fileName = fileName;
         }
@@ -50,10 +50,9 @@ namespace VehiclePositionSolver.Readers
             {
                 reading = _parser.ParseTo(stream);
             }
-            Console.WriteLine("Read " + _positionBuffer);
         }
 
-        string ReadNullTerminated(StreamReader rdr)
+        private string ReadNullTerminated(StreamReader rdr)
         {
             var bldr = new StringBuilder();
             int nc;

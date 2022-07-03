@@ -5,7 +5,7 @@ namespace VehiclePositionSolver.Pipeline
 {
     public interface IPipelineSolver
     {
-        InputPositionStruct[] Results { get; }
+        InputPosition[] Results { get; }
 
         void Solve(GeoCoordinate[] geoCoordinates, IPositionBuffer positionBuffer);
     }

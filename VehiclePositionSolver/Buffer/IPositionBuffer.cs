@@ -8,8 +8,10 @@ namespace VehiclePositionSolver.Buffer
         long MaxIndex { get; }
 
         void PreAllocate();
-        void AddPosition(PositionStruct position);
-        GeoCoordinate At(long i);
+        void AddPosition(Position position);
+        GeoCoordinate CoordAt(long i);
+
+        Position Position(long i);
 
     }
 }
