@@ -11,10 +11,12 @@ void Process(PipelineOptions pipelineOptions)
 
     IPipelineReader pipeLineReader = StaticBuilder.Reader(pipelineOptions);
     IPipelineSolver solver = StaticBuilder.Solver(pipelineOptions);
+    IPipelineWriter writer = StaticBuilder.Writer(pipelineOptions);
 
     pipeline.
         AddReader(pipeLineReader).
         AddSolver(solver).
+        AddWriter(writer).
         Run();
 
 }

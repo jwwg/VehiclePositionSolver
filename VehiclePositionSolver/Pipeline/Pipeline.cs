@@ -14,6 +14,7 @@ namespace VehiclePositionSolver.Pipeline
 
         IPipelineReader reader;
         IPipelineSolver solver;
+        IPipelineWriter writer;
 
         public Pipeline AddReader(IPipelineReader reader)
         {
@@ -26,6 +27,13 @@ namespace VehiclePositionSolver.Pipeline
             this.solver = solver;
             return this;
         }
+
+        public Pipeline AddWriter(IPipelineWriter writer)
+        {
+            this.writer = writer;
+            return this;
+        }
+
 
         public void Run()
         {
@@ -41,9 +49,11 @@ namespace VehiclePositionSolver.Pipeline
             long totalMs = stopWatch.ElapsedMilliseconds;
             stopWatch.Stop();
             Console.WriteLine("Process time : " + (totalMs - readTime));
-            WriteResults();
+            writer.WriteResults(solver.Results, reader);
+            //WriteResults();
             Console.WriteLine("Total time " + totalMs);
         }
+
 
         private void WriteResults()
         {

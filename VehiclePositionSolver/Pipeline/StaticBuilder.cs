@@ -1,6 +1,7 @@
 ﻿using VehiclePositionSolver.Buffer;
 using VehiclePositionSolver.Readers;
 using VehiclePositionSolver.Solver;
+using VehiclePositionSolver.Writers;
 
 namespace VehiclePositionSolver.Pipeline
 {
@@ -20,6 +21,14 @@ namespace VehiclePositionSolver.Pipeline
             };
         }
 
+        internal static IPipelineWriter Writer(PipelineOptions pipelineOptions)
+        {
+            return pipelineOptions.Output switch
+            {
+                _ => new TextResults(),
+            };
+        }
+
         private static GridCache.GridCache[] GridCaches(PipelineOptions pipelineOptions)
         {
             return new GridCache.GridCache[] { new GridCache.GridCache(2) };
@@ -31,7 +40,7 @@ namespace VehiclePositionSolver.Pipeline
             {
                 nameof(AlternateSolver) => new AlternateSolver(),
                 nameof(GridSolver) => new GridSolver(),
-                _ => new DefaultSolver()
+                _ => new BruteForceSolver()
             };
         }
     }

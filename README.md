@@ -5,15 +5,19 @@ Finds nearest position to a predefined set of positions, given a data file with
 
 Assumptions
 ---------------------
-- the default parser assumes a fixed record length of 30 bytes
+Fixed record length of 30 bytes
+2,000,000 position records (but it is a command line parameter)
 
 Building and Running
 --------------------
 Main project is VehiclePositionSolver, running in .NET 6. 
+Run with --help for command line options
+By default, it uses the faster GridSolver
  
 Notes
 ----------
-
+- minimal error checking
+- no "wrapping" implemented - grid cache will fail across min/max longitude 
 
 Benchmark
 ----------------------------------------------
@@ -26,9 +30,15 @@ Benchmark application :
 - total time : 4663
 
 VehiclePositionSolver (fixed size reader, unoptimized solver) :
-- read time : 390
-- process time : 2605
-- total time : 2995
+- read time : 483
+- process time : 2753
+- total time : 3236
+
+VehiclePositionSolver (fixed size reader, Grid solver) :
+- read time : 2871
+- process time : 3
+- total time : 2874
+
 
 
 

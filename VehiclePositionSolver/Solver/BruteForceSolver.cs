@@ -4,7 +4,7 @@ using VehiclePositionSolver.Pipeline;
 
 namespace VehiclePositionSolver.Solver
 {
-    internal class DefaultSolver : IPipelineSolver
+    internal class BruteForceSolver : IPipelineSolver
     {
 
         private InputPosition[] inputPositions;
