@@ -5,14 +5,14 @@ Finds nearest position to a predefined set of positions, given a data file with
 
 Assumptions
 ---------------------
-Fixed record length of 30 bytes
-2,000,000 position records (but it is a command line parameter)
+Fixed record length of 30 bytes.
+2,000,000 position records (but it is a command line parameter).
 
 Building and Running
 --------------------
 Main project is VehiclePositionSolver, running in .NET 6. 
-Run with --help for command line options
-By default, it uses the faster GridSolver
+Run with --help for command line options.
+By default, it uses the faster GridSolver.
  
 Notes
 ----------
