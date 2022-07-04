@@ -11,9 +11,9 @@ namespace VehiclePositionTests
         public void Test_LatitudeMultiplier()
         {
             GridCache gridCache = new GridCache(3);
-            GeoCoordinate geoCoordinate = new GeoCoordinate(34.544909, 0);
+            Position position = new Position(-1, 34.544909f, 0);
             Assert.AreEqual(1000000, gridCache.latMultiplier); 
-            long actual = gridCache.ToCache(geoCoordinate);
+            long actual = gridCache.ToCache(position);
 
             //34+90 = 124,544,
             //0+180=          180,000
@@ -44,7 +44,7 @@ namespace VehiclePositionTests
             GridCache gridCache = new GridCache(3);
             Position positionStruct = new Position(0, 34.544909f, -102.1015091f);
             gridCache.Add(positionStruct);
-            Assert.IsTrue(gridCache.HasEntries(positionStruct.geoCoordinate)); 
+            Assert.IsTrue(gridCache.HasEntries(positionStruct)); 
         }
 
         [Test]
@@ -54,7 +54,7 @@ namespace VehiclePositionTests
             Position positionStruct = new Position(0, 34.544909f, -102.1015091f);
             gridCache.Add(positionStruct);
             gridCache.Add(positionStruct);
-            List<Position>? positions = gridCache.At(positionStruct.geoCoordinate);
+            List<Position>? positions = gridCache.At(positionStruct);
             Assert.IsNotNull(positions);
             Assert.AreEqual(2, positions.Count);
         }
@@ -63,7 +63,7 @@ namespace VehiclePositionTests
         public void Test_Decompose()
         {
             GridCache gridCache = new GridCache(3);
-            GeoCoordinate geoCoordinate = new GeoCoordinate(34.544909, -102.101509);
+            Position geoCoordinate = new Position(-1,34.544909f, -102.101509f);
             long coord = gridCache.ToCache(geoCoordinate);
             (long latitude, long longitude) = gridCache.Decompose(coord);
             Assert.AreEqual(124545 , latitude);

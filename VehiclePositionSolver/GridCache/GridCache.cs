@@ -31,7 +31,7 @@ namespace VehiclePositionSolver.GridCache
             return
                 ToCachePart(coordinate.latitude + 90, latMultiplier)
                 +
-                ToCachePart(coordinate.longitude + 180, longMultiplier);
+                Convert.ToInt64((coordinate.longitude + 180) * digitsMultiplier);
         }
 
         public long ToCachePart(double value, long cacheMultiplier)
