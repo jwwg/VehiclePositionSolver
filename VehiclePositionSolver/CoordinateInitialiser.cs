@@ -1,21 +1,22 @@
-﻿using GeoCoordinatePortable;
-
-internal class CoordinateInitialiser
+﻿namespace VehiclePositionSolver
 {
-    internal static GeoCoordinate[] Init()
+    internal class CoordinateInitialiser
     {
-        return new GeoCoordinate[]
+        internal static InputPosition[] Init()
         {
-            new GeoCoordinate(34.544909,-102.100843),
-            new GeoCoordinate(32.345544,-99.123124),
-            new GeoCoordinate(33.234235,-100.214124),
-            new GeoCoordinate(35.195739,-95.348899),
-            new GeoCoordinate(31.895839,-97.789573),
-            new GeoCoordinate(32.895839, -101.789573),
-            new GeoCoordinate(34.115839,-100.225732),
-            new GeoCoordinate(32.335839, -99.992232),
-            new GeoCoordinate(33.535339, -94.792232),
-            new GeoCoordinate(32.234235, -100.222222)
-        };
+            return new InputPosition[]
+            {
+            new InputPosition(34.544909f,-102.100843f),
+            new InputPosition(32.345544f,-99.123124f),
+            new InputPosition(33.234235f,-100.214124f),
+            new InputPosition(35.195739f,-95.348899f),
+            new InputPosition(31.895839f,-97.789573f),
+            new InputPosition(32.895839f, -101.789573f),
+            new InputPosition(34.115839f,-100.225732f),
+            new InputPosition(32.335839f, -99.992232f),
+            new InputPosition(33.535339f, -94.792232f),
+            new InputPosition(32.234235f, -100.222222f)
+            };
+        }
     }
 }

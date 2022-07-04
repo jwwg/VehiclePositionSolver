@@ -25,7 +25,7 @@ namespace VehiclePositionSolver.Buffer
                 grid.Add(position);
         }
 
-        public GeoCoordinate CoordAt(long i) => positions[i].geoCoordinate;
+        public Position CoordAt(long i) => positions[i];
 
         public Position Position(long i) => positions[i];
 

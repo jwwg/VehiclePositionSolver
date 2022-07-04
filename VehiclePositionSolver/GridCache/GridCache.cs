@@ -26,12 +26,12 @@ namespace VehiclePositionSolver.GridCache
             this.digits = digits;
         }
 
-        public long ToCache(GeoCoordinate coordinate)
+        public long ToCache(Position coordinate)
         {
             return
-                ToCachePart(coordinate.Latitude + 90, latMultiplier)
+                ToCachePart(coordinate.latitude + 90, latMultiplier)
                 +
-                ToCachePart(coordinate.Longitude + 180, longMultiplier);
+                ToCachePart(coordinate.longitude + 180, longMultiplier);
         }
 
         public long ToCachePart(double value, long cacheMultiplier)
@@ -46,7 +46,7 @@ namespace VehiclePositionSolver.GridCache
         /// <param name="position"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        internal List<Position> PossiblePositions(GeoCoordinate position)
+        internal List<Position> PossiblePositions(Position position)
         {
             (long latitude, long longitude) = Decompose(ToCache(position));
 
@@ -68,7 +68,7 @@ namespace VehiclePositionSolver.GridCache
 
         public void Add(Position position)
         {
-            long coord = ToCache(position.geoCoordinate);
+            long coord = ToCache(position);
             if (grid.TryGetValue(coord, out List<Position> positions))
             {
                 positions.Add(position);
@@ -76,15 +76,15 @@ namespace VehiclePositionSolver.GridCache
             else grid[coord] = new List<Position>() { position };
         }
 
-        public bool HasEntries(GeoCoordinate geoCoordinate)
+        public bool HasEntries(Position position)
         {
-            long coord = ToCache(geoCoordinate);
+            long coord = ToCache(position);
             return grid.ContainsKey(coord);
         }
 
-        public List<Position>? At(GeoCoordinate geoCoordinate)
+        public List<Position>? At(Position position)
         {
-            long coord = ToCache(geoCoordinate);
+            long coord = ToCache(position);
             if (grid.TryGetValue(coord, out var values))
                 return values;
             return null;

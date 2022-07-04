@@ -2,22 +2,18 @@
 
 namespace VehiclePositionSolver
 {
-    public class InputPosition
+    public class InputPosition : Position
     {
-        public GeoCoordinate position;
         public double distance;
         public int bufferIndex;
-        public double latitudeRadians;
-        public double longitudeRadians;
         public Position positionStruct;
 
-        public InputPosition(GeoCoordinate position, float distance, int bufferIndex)
+        public InputPosition(float latitude, float longitude) : base(-1, latitude, longitude)
         {
-            this.position = position;
-            this.distance = distance;
-            this.bufferIndex = bufferIndex;
-            latitudeRadians = position.Latitude * Constants.DegreesToRadians;
-            longitudeRadians = position.Longitude * Constants.DegreesToRadians;
+            distance = Constants.MaxDistance;
+            bufferIndex = -1;
         }
+
+
     }
 }

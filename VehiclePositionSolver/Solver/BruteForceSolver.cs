@@ -9,22 +9,16 @@ namespace VehiclePositionSolver.Solver
 
         private InputPosition[] inputPositions;
 
-        readonly private float MaxDistance = 21000000; // 21,000 km = 21,000,000 m
-
         public InputPosition[] Results => inputPositions;
 
-        public void Solve(GeoCoordinate[] geoCoordinates, IPositionBuffer positionBuffer)
+        public void Solve(InputPosition[] inputPositions, IPositionBuffer positionBuffer)
         {
-            inputPositions =
-                geoCoordinates.Select(x => new InputPosition(
-                    x, MaxDistance, -1
-                    )).ToArray();
-
+            this.inputPositions = inputPositions;
             for (int i = 0; i < positionBuffer.MaxIndex; i++)
             {
                 for (int j = 0; j < inputPositions.Length; j++)
                 {
-                    double distance = inputPositions[j].position.GetDistanceTo(positionBuffer.CoordAt(i));
+                    double distance = StaticMath.Distance(inputPositions[j],positionBuffer.CoordAt(i));
                     if (inputPositions[j].distance > distance)
                     {
                         inputPositions[j].distance = distance;

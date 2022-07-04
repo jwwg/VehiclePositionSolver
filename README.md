@@ -34,11 +34,15 @@ VehiclePositionSolver (fixed size reader, unoptimized solver) :
 - process time : 2753
 - total time : 3236
 
-VehiclePositionSolver (fixed size reader, Grid solver) :
+VehiclePositionSolver (fixed size reader, Grid solver, *BEFORE* read optimisation) :
 - read time : 2871
 - process time : 3
 - total time : 2874
 
+VehiclePositionSolver (fixed size reader, Grid solver, *AFTER* read optimisation) :
+- read time : 1552
+- process time : 3
+- total time : 1555
 
 
 

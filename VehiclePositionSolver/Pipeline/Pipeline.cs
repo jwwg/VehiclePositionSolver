@@ -44,26 +44,14 @@ namespace VehiclePositionSolver.Pipeline
             reader.Read();
             long readTime = stopWatch.ElapsedMilliseconds;
             Console.WriteLine("Read time : " + stopWatch.ElapsedMilliseconds);
-            GeoCoordinate[] geoCoordinates = CoordinateInitialiser.Init();
-            solver.Solve(geoCoordinates, reader.PositionBuffer);
+            var inputValues = CoordinateInitialiser.Init();
+            solver.Solve(inputValues, reader.PositionBuffer);
             long totalMs = stopWatch.ElapsedMilliseconds;
             stopWatch.Stop();
             Console.WriteLine("Process time : " + (totalMs - readTime));
-            writer.WriteResults(solver.Results, reader);
-            //WriteResults();
+            writer.WriteResults(inputValues, reader);
             Console.WriteLine("Total time " + totalMs);
         }
 
-
-        private void WriteResults()
-        {
-            foreach (var result in solver.Results)
-            {
-                Console.WriteLine(result.distance.ToString("F2") + " m, vehicle  "
-                    + reader.RegistrationNrAt(result.bufferIndex) + " closest to "
-                    + result.position.ToString() + " is "
-                    + reader.PositionBuffer.CoordAt(result.bufferIndex));
-            }
-        }
     }
 }
