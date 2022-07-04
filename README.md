@@ -44,6 +44,10 @@ VehiclePositionSolver (fixed size reader, Grid solver, *AFTER* read optimisation
 - process time : 3
 - total time : 1555
 
+VehiclePositionSolver (fixed size reader, Alternate solver using Square distance comparison) :
+- read time : 367
+- process time : 80
+- total time : 447
 
 
 

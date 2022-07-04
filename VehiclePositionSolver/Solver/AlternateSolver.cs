@@ -20,7 +20,7 @@ namespace VehiclePositionSolver.Solver
             {
                 for (int j = 0; j < inputPositions.Length; j++)
                 {
-                    double distance = StaticMath.Distance(inputPositions[j], positionBuffer.Position(i));
+                    double distance = StaticMath.SquareDistance(inputPositions[j], positionBuffer.Position(i));
                     if (inputPositions[j].distance > distance)
                     {
                         inputPositions[j].distance = distance;
@@ -28,6 +28,9 @@ namespace VehiclePositionSolver.Solver
                     }
                 }
             }
+
+            for (int i = 0; i < inputPositions.Length; i++)
+                inputPositions[i].distance = StaticMath.Distance(inputPositions[i], positionBuffer.Position(inputPositions[i].bufferIndex));
         }
 
     }

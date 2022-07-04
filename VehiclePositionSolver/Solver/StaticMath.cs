@@ -16,5 +16,13 @@ namespace VehiclePositionSolver.Solver
             return 6376500.0 * (2.0 * Math.Atan2(Math.Sqrt(num5), Math.Sqrt(1.0 - num5)));
         }
 
+        public static double SquareDistance(InputPosition from, Position other)
+        {
+            float x = from.longitude - other.longitude;
+            float y = from.latitude - other.latitude;
+            return x * x + y * y;
+        }
+
+
     }
 }

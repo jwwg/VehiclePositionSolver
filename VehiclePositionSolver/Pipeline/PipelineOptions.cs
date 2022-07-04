@@ -7,7 +7,7 @@ namespace VehiclePositionSolver.Pipeline
         [Option(Default = "FixedReader")]
         public string Reader { get; set; }
 
-        [Option(Default = "GridSolver", HelpText = "Use BasicSolver or GridSolver")]
+        [Option(Default = "AlternateSolver", HelpText = "Use BasicSolver, GridSolver or AlternateSolver")]
         public string Solver { get; set; }
 
         [Option(Default = 2000000, HelpText = "Number of records in data file")]
